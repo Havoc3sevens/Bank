@@ -17,16 +17,11 @@ class bankAccount {
     public:
     void newAccount(const char *usrname) {
         balance = 0;
-        delta = 0;
         accname = usrname;
         lastdeposit = 0;
         lastwithdraw = 0;
 
         printf("%s, welcome to your new account!\n\n", usrname);
-    }
-
-    double getAccountdelta() {
-        return delta;
     }
 
     double getAccountdeposit() {
@@ -62,7 +57,6 @@ class bankAccount {
 
     void deposit(float usrdelta) {
         balance += usrdelta;
-        delta = usrdelta;
         lastdeposit = usrdelta;
         printf("%s, you deposited $%.2f.\n\n",
             getAccountname(), usrdelta);
@@ -70,7 +64,6 @@ class bankAccount {
 
     void withdraw(float usrdelta) {
         balance -= usrdelta;
-        delta = usrdelta;
         lastwithdraw = usrdelta;
         printf("%s, you withdrew $%.2f.\n\n",
             getAccountname(), usrdelta);
