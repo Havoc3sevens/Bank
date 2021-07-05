@@ -2,7 +2,7 @@ OBJS1 = main.cpp
 
 PROG1 = run
 
-C = g++
+C = gcc
 
 all: $(PROG1)
 
