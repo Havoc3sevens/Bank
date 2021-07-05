@@ -9,7 +9,6 @@ as program matures.
 
 class bankAccount {
     float balance;
-    float delta;
     const char *accname;
     float lastdeposit;
     float lastwithdraw;
