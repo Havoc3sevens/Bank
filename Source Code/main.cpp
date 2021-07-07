@@ -6,6 +6,7 @@ as program matures.
     Purpose: Practice using classes
 */
 #include <cstdio>
+#include "my_char_lib.h"
 
 class bankAccount {
     float balance;
@@ -66,21 +67,50 @@ class bankAccount {
 
 int main()
 {
-    char usrnm[256];
+    char usrinput[256];
+    float usrvalue;
+    char nameinput[256];
+    int exitVal = 1;
+    char New[] = "new";
+    char dpst[] = "deposit";
+    char wthdrw[] = "withdraw";
+    char show[] = "show";
+    char ext[] = "exit";
+    char yes[] = "yes";
 
-    bankAccount jonAcc;
-    printf("What is your name?\n");
-    scanf("%s", usrnm);
+    bankAccount newAcc;
+    do {
+        printf("What would you like to do?\n");
+        scanf("%s", usrinput);
+        if (comparechar(usrinput, New)) {
+            printf("What is your name?\n");
+            scanf("%s", nameinput);
+            newAcc.newAccount(nameinput);
+        } else if (comparechar(usrinput, dpst)) {
+            printf("What is your deposit?\n");
+            scanf("%f", &usrvalue);
+            newAcc.deposit(usrvalue);
+        } else if (comparechar(usrinput, wthdrw)) {
+            printf("What is your withdraw?\n");
+            scanf("%f", &usrvalue);
+            newAcc.withdraw(usrvalue);
+        } else if (comparechar(usrinput, show)) {
+            newAcc.showBalance();
+        } else if (comparechar(usrinput, ext)) {
+            exitVal = 0;
+        } else {
+            printf("Not a valid input.\n");
+            printf("Would you like to exit? (yes,no)\n");
+            scanf("%s", usrinput);
+            if (comparechar(usrinput, yes)) {
+                exitVal = 0;
+            } else {
+                exitVal = 1;
+            }
+        }
+    }
+    while (exitVal);
     
-    jonAcc.newAccount(usrnm);
-
-    jonAcc.showBalance();
-    jonAcc.deposit(100);
-    jonAcc.showBalance();
-    jonAcc.withdraw(20);
-    jonAcc.showBalance();
-    jonAcc.getLastdeposit();
-    jonAcc.getLastwithdraw();
-
+  
     return 0;
 }
