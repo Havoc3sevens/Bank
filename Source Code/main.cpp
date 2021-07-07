@@ -40,44 +40,39 @@ class bankAccount {
     }
 
     void showBalance() {
-        printf("%s, your account balance is $%.2f.\n\n",
-            getAccountname(), getBalance());
+        printf("%s, your account balance is $%.2f.\n\n", accname, balance);
     }
 
     void getLastdeposit() {
-        printf("%s, your last deposit was $%.2f.\n\n",
-            getAccountname(), getAccountdeposit());
+        printf("%s, your last deposit was $%.2f.\n\n", accname, lastdeposit);
     }
 
     void getLastwithdraw() {
-        printf("%s, your last withdraw was $%.2f.\n\n",
-            getAccountname(), getAccountwithdraw());
+        printf("%s, your last withdraw was $%.2f.\n\n", accname, lastwithdraw);
     }
 
     void deposit(float usrdelta) {
         balance += usrdelta;
         lastdeposit = usrdelta;
-        printf("%s, you deposited $%.2f.\n\n",
-            getAccountname(), usrdelta);
+        printf("%s, you deposited $%.2f.\n\n", accname, usrdelta);
     }
 
     void withdraw(float usrdelta) {
         balance -= usrdelta;
         lastwithdraw = usrdelta;
-        printf("%s, you withdrew $%.2f.\n\n",
-            getAccountname(), usrdelta);
+        printf("%s, you withdrew $%.2f.\n\n", accname, usrdelta);
     }
 };
 
-
-
 int main()
 {
+    char usrnm[256];
+
     bankAccount jonAcc;
-    bankAccount bobAcc;
+    printf("What is your name?\n");
+    scanf("%s", usrnm);
     
-    jonAcc.newAccount("Jon");
-    bobAcc.newAccount("Bob");
+    jonAcc.newAccount(usrnm);
 
     jonAcc.showBalance();
     jonAcc.deposit(100);
@@ -87,8 +82,5 @@ int main()
     jonAcc.getLastdeposit();
     jonAcc.getLastwithdraw();
 
-    bobAcc.showBalance();
-    bobAcc.getLastdeposit();
-    bobAcc.getLastwithdraw();
     return 0;
 }
